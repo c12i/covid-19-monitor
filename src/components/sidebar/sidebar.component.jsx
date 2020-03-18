@@ -6,7 +6,7 @@ import NavToggle from '../nav-toggle/nav-toggle.component';
 import SidenavHeader from '../sidenav-header/sidenav-header.component';
 import SidebarBody from '../sidebar-body/sidebar-body.component';
 
-import { Sidebar, Sidenav } from 'rsuite';
+import { Sidebar, Sidenav, Affix } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-dark.css';
 
 const SideBarComponent = ({ expand, handleToggle, windowWidth }) => (
@@ -21,7 +21,9 @@ const SideBarComponent = ({ expand, handleToggle, windowWidth }) => (
       defaultOpenKeys={['3']}
       appearance="subtle"
     >
-      <SidebarBody />
+      <Affix>
+        <SidebarBody />
+      </Affix>
     </Sidenav>
     {
       windowWidth < 768 ? null

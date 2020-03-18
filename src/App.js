@@ -46,8 +46,8 @@ class App extends React.Component {
         <Container>
           <SidebarComponent expand={this.state.expand} handleToggle={this.handleToggle} />
           <Container style={contentStyles}>
-            <HeaderComponent pageTitle={'TITLE'} />
             <Content>
+              <HeaderComponent pageTitle={'TITLE'} />
               <Panel header="Panel title" bordered>
                 <Paragraph />
               </Panel>
