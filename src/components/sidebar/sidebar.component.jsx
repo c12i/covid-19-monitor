@@ -1,5 +1,7 @@
 import React from 'react';
 
+import windowSize from 'react-window-size';
+
 import NavToggle from '../nav-toggle/nav-toggle.component';
 import SidenavHeader from '../sidenav-header/sidenav-header.component';
 import SidebarBody from '../sidebar-body/sidebar-body.component';
@@ -7,10 +9,10 @@ import SidebarBody from '../sidebar-body/sidebar-body.component';
 import { Sidebar, Sidenav } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-dark.css';
 
-const SideBarComponent = ({ expand, handleToggle }) => (
+const SideBarComponent = ({ expand, handleToggle, windowWidth }) => (
   <Sidebar
     style={{ display: 'flex', flexDirection: 'column' }}
-    width={expand ? 260 : 56}
+    width={expand && windowWidth > 768 ? 260 : 56}
     collapsible
   >
     <SidenavHeader />
@@ -21,8 +23,12 @@ const SideBarComponent = ({ expand, handleToggle }) => (
     >
       <SidebarBody />
     </Sidenav>
-    <NavToggle expand={expand} onChange={handleToggle} />
+    {
+      windowWidth < 768 ? null
+      :
+      <NavToggle expand={expand} onChange={handleToggle} /> 
+    }
   </Sidebar>
 );
 
-export default SideBarComponent;
+export default windowSize(SideBarComponent);
