@@ -4,15 +4,15 @@ const selectAllCases = state => state.allCases;
 
 export const selectAll = createSelector(
   [selectAllCases],
-  data => data.all
+  allCases => allCases.all
 );
 
 export const selectIsFetching = createSelector(
   [selectAllCases],
-  data => data.selectIsFetching
+  allCases => allCases.isFetching
 );
 
 export const selectErrorMessage = createSelector(
   [selectAllCases],
-  data => data.errorMessage
+  allCases => allCases.errorMessage
 );

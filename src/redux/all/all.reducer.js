@@ -1,7 +1,12 @@
 import { allActionTypes } from './all.types';
 
 const INITIAL_STATE = {
-  all: null,
+  all: {
+    cases: 219555,
+    deaths: 8972,
+    recovered: 85751,
+    updated: 1584603712630
+},
   isFetching: false,
   errorMessage: undefined
 };
