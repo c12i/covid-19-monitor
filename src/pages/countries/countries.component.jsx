@@ -4,10 +4,11 @@ import { createStructuredSelector } from 'reselect';
 
 import { Panel } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
+import { Key } from './countries.styles';
 
 import { fetchCountriesAsync } from '../../redux/countries/countries.actions';
 
-import { selectCountries, selectIsFetching, selectErrorMessage } from '../../redux/countries/countries.selectors';
+import { selectCountries, selectIsFetching } from '../../redux/countries/countries.selectors';
 
 import SearchForm from '../../components/search-form/search-form.component';
 import PlaceholderPanels from '../../components/placeholders/placeholders.component';
@@ -36,6 +37,9 @@ class CountriesPage extends React.Component {
     const { searchField } = this.state;
     const { countries, loading } = this.props;
 
+    const filteredCountries = countries.filter(({ country }) => 
+      country.toLowerCase().includes(searchField.toLowerCase()));
+
     return (
       <div>
         <br />
@@ -48,13 +52,13 @@ class CountriesPage extends React.Component {
 
         {
           !loading ? 
-          countries.map(({ country, cases, deaths, recovered, active }) => (
+          filteredCountries.map(({ country, cases, deaths, recovered, active }) => (
             <Panel style={{marginBottom: '10px'}} key={country} bordered>
               <h3>{country}</h3>
-              <p>Cases: {cases}</p>
-              <p>Deaths: {deaths}</p>
-              <p>Recovered: {recovered}</p>
-              <p>Active: {active}</p>
+              <p><Key>Cases</Key>: {cases}</p>
+              <p><Key>Deaths</Key>: {deaths}</p>
+              <p><Key>Recovered</Key>: {recovered}</p>
+              <p><Key>Active</Key>: {active}</p>
             </Panel>
           )) :
             <PlaceholderPanels />
@@ -67,8 +71,7 @@ class CountriesPage extends React.Component {
 
 const mapStateToProps = createStructuredSelector({
   countries: selectCountries,
-  loading: selectIsFetching,
-  error: selectErrorMessage
+  loading: selectIsFetching
 });
 
 const mapDispatchToProps = dispatch => ({
