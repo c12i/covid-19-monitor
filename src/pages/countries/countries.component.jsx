@@ -57,7 +57,7 @@ class CountriesPage extends React.Component {
             recovered={recovered}
             active={active} />
           )) :
-            <PlaceholderPanels />
+            <PlaceholderPanels rows={6} />
         }
 
       </div>

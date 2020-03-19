@@ -7,19 +7,22 @@ const panelStyles = {
   marginBottom: '10px'
 };
 
-const PlaceholderPanels = () => (
+const PlaceholderPanels = ({ rows }) => (
   <div>
     <Panel bordered style={panelStyles}>
-      <Placeholder.Paragraph rows={6} active />
+      <Placeholder.Paragraph rows={rows} active />
     </Panel>
     <Panel bordered style={panelStyles}>
-      <Placeholder.Paragraph rows={6} active />
+      <Placeholder.Paragraph rows={rows} active />
     </Panel>
     <Panel bordered style={panelStyles}>
-      <Placeholder.Paragraph rows={6} active />
+      <Placeholder.Paragraph rows={rows} active />
     </Panel>
     <Panel bordered style={panelStyles}>
-      <Placeholder.Paragraph rows={6} active />
+      <Placeholder.Paragraph rows={rows} active />
+    </Panel>
+    <Panel bordered style={panelStyles}>
+      <Placeholder.Paragraph rows={rows} active />
     </Panel>
   </div>
 );
