@@ -8,7 +8,7 @@ import 'rsuite/dist/styles/rsuite-default.css';
 const HeaderComponent = () => (
   <Header>
     <Affix>
-      <Navbar appearance="inverse">
+      <Navbar appearance="default">
         <Navbar.Body>
           <Nav>
             <Link to='/'>
