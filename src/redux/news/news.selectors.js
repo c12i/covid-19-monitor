@@ -7,6 +7,11 @@ export const selectArticles = createSelector(
   data => data.articles
 );
 
+export const selectNewsArticles = createSelector(
+  [selectArticles],
+  data => data.articles
+);
+
 export const selectIsFetching = createSelector(
   [selectNews],
   data => data.isFetching
