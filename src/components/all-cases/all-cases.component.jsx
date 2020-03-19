@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { Panel } from 'rsuite';
+import { Panel, Divider } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
 import { AllCasesContainer, Key } from  './all-cases.styles';
 
@@ -16,10 +16,11 @@ const AllCases = ({ all }) => {
 		
 		<Panel bordered>
 			<AllCasesContainer>
-				<h4><Key>Cases</Key>: {cases}</h4>
-				<h4><Key>Deaths</Key>: {deaths}</h4>
-				<h4><Key>Recovered</Key>: {recovered}</h4>
-				<h4><Key>Updated</Key>: {date}</h4>
+				<h4><Key>Cases</Key> <Divider vertical /> {cases}</h4>
+				<h4><Key>Deaths</Key> <Divider vertical /> {deaths}</h4>
+				<h4><Key>Recovered</Key> <Divider vertical /> {recovered}</h4>
+				<br/>
+				<small>Updated on {date}</small>
 			</AllCasesContainer>
   	</Panel>
 	)

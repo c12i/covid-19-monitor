@@ -8,11 +8,11 @@ import 'rsuite/dist/styles/rsuite-default.css';
 const HeaderComponent = () => (
   <Header>
     <Affix>
-      <Navbar appearance="inverse">
+      <Navbar appearance="subtle">
         <Navbar.Body>
           <Nav>
             <Link to='/'>
-              <Nav.Item icon={<Icon icon="home" />}>Home</Nav.Item>
+              <Nav.Item icon={<Icon icon="globe" />}>Home</Nav.Item>
             </Link>
             <Link to='/countries'>
               <Nav.Item>Countries</Nav.Item>
@@ -21,13 +21,13 @@ const HeaderComponent = () => (
               <Nav.Item>News</Nav.Item>
             </Link>
             <Dropdown title="About" icon={<Icon icon="github" />}>
-              <a href='https://github.com/collinsmuriuki' target='_blank'>
+              <a href='https://github.com/collinsmuriuki'>
                 <Dropdown.Item>Author</Dropdown.Item>
               </a>
-              <a href='https://github.com/collinsmuriuki/COVID-19-monitor' target='_blank'>
+              <a href='https://github.com/collinsmuriuki/COVID-19-monitor'>
                 <Dropdown.Item>Repository</Dropdown.Item>
               </a>
-              <a href='https://muriuki.dev' target='_blank'>
+              <a href='https://muriuki.dev'>
                 <Dropdown.Item>Website</Dropdown.Item>
               </a>
             </Dropdown>
