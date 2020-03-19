@@ -16,41 +16,22 @@ const contentStyles = {
   marginTop: '50'
 }
 
-class App extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {
-      expand: true
-    };
-    this.handleToggle = this.handleToggle.bind(this);
-  };
-
-  handleToggle = () => {
-    this.setState({
-      expand: !this.state.expand
-    });
-  }
-
-  render() {
-    return (
-      <div className='show-fake-browser sidebar-page'>
-        <Container>
-          <HeaderComponent />
-          <Container style={contentStyles}>
-            <Content>
-              <Switch>
-                <Route exact path='/' component={HomPage} />
-                <Route exact path='/countries' component={CountriesPage} />
-                <Route exact path='/news' component={NewsPage} />
-              </Switch>
-            </Content>
-            <FooterComponent />
-          </Container>
-        </Container>
-      </div>
-    )
-  }
-}
+const App = () => (
+  <div className='show-fake-browser sidebar-page'>
+    <Container>
+      <HeaderComponent />
+      <Container style={contentStyles}>
+        <Content>
+          <Switch>
+            <Route exact path='/' component={HomPage} />
+            <Route exact path='/countries' component={CountriesPage} />
+            <Route exact path='/news' component={NewsPage} />
+          </Switch>
+        </Content>
+        <FooterComponent />
+      </Container>
+    </Container>
+  </div>
+);
 
 export default App;

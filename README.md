@@ -4,12 +4,12 @@
   <a href="LICENSE" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   </a>
-  <a href="https://twitter.com/collinsmuriuki" target="_blank">
-    <img alt="Twitter: collinsmuriuki" src="https://img.shields.io/twitter/follow/collinsmuriuki.svg?style=social" />
+  <a href="https://twitter.com/collinsmuriuki_" target="_blank">
+    <img alt="Twitter: collinsmuriuki_" src="https://img.shields.io/twitter/follow/collinsmuriuki_.svg?style=social" />
   </a>
 </p>
 
-> View live updates on the COVID-19 situation in the world. API courtesy of [https://github.com/NovelCOVID/API](NovelCOVID) 
+> View live updates on the COVID-19 situation in the world. API courtesy of https://github.com/NovelCOVID/API
 
 ### ✨ [Demo](https://covid19monitorapp.netlify.com/)
 
@@ -37,7 +37,7 @@ yarn start
 👤 **collinsmuriuki**
 
 * Website: https://muriuki.dev
-* Twitter: [@collinsmuriuki](https://twitter.com/collinsmuriuki)
+* Twitter: [@collinsmuriuki_](https://twitter.com/collinsmuriuki_)
 * Github: [@collinsmuriuki](https://github.com/collinsmuriuki)
 * LinkedIn: [@collinsmuriuki](https://linkedin.com/in/collinsmuriuki)
 
