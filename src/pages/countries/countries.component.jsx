@@ -2,16 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { Panel } from 'rsuite';
-import 'rsuite/dist/styles/rsuite-default.css';
-import { Key } from './countries.styles';
-
 import { fetchCountriesAsync } from '../../redux/countries/countries.actions';
 
 import { selectCountries, selectIsFetching } from '../../redux/countries/countries.selectors';
 
 import SearchForm from '../../components/search-form/search-form.component';
 import PlaceholderPanels from '../../components/placeholders/placeholders.component';
+import CountryPanel from '../../components/country-panel/country-panel.component';
 
 class CountriesPage extends React.Component {
   constructor() {
@@ -53,13 +50,12 @@ class CountriesPage extends React.Component {
         {
           !loading ? 
           filteredCountries.map(({ country, cases, deaths, recovered, active }) => (
-            <Panel style={{marginBottom: '10px'}} key={country} bordered>
-              <h3>{country}</h3>
-              <p><Key>Cases</Key>: {cases}</p>
-              <p><Key>Deaths</Key>: {deaths}</p>
-              <p><Key>Recovered</Key>: {recovered}</p>
-              <p><Key>Active</Key>: {active}</p>
-            </Panel>
+            <CountryPanel 
+            country={country}
+            cases={cases}
+            deaths={deaths}
+            recovered={recovered}
+            active={active} />
           )) :
             <PlaceholderPanels />
         }
