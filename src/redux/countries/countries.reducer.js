@@ -1,7 +1,7 @@
 import {countriesActionTypes } from './countries.types';
 
 const INITIAL_STATE = {
-  countries: null,
+  countries: [],
   isFetching: false,
   errorMessage: undefined
 };
@@ -17,7 +17,7 @@ const countriesReducer = (state = INITIAL_STATE, action) => {
     case countriesActionTypes.FETCH_COUNTRIES_CASES_SUCCESS:
       return {
         ...state,
-        countries: action.payload,
+        countries: [...action.payload],
         isFetching: false
       };
 

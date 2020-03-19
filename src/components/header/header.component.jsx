@@ -8,11 +8,11 @@ import 'rsuite/dist/styles/rsuite-default.css';
 const HeaderComponent = () => (
   <Header>
     <Affix>
-      <Navbar appearance="subtle">
+      <Navbar appearance="inverse">
         <Navbar.Body>
           <Nav>
             <Link to='/'>
-              <Nav.Item icon={<Icon icon="globe" />}>Home</Nav.Item>
+              <Nav.Item icon={<Icon icon="dashboard" />}>Home</Nav.Item>
             </Link>
             <Link to='/countries'>
               <Nav.Item>Countries</Nav.Item>
