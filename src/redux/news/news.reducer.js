@@ -1,7 +1,7 @@
 import { newsActionTypes } from './news.types';
 
 const INITIAL_STATE = {
-  articles: null,
+  articles: [],
   isFetching: false,
   errorMessage: undefined
 };
@@ -17,7 +17,7 @@ const newsReducer = (state = INITIAL_STATE, action) => {
     case newsActionTypes.FETCH_NEWS_SUCCESS:
       return {
         ...state,
-        articles: action.payload,
+        articles: [...action.payload],
         isFetching: false
       };
 
