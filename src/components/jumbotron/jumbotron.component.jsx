@@ -13,7 +13,7 @@ import AllCases from '../all-cases/all-cases.component';
 const Jumbotron = ({ loading, error }) => (
   <div>
     <Header>
-      <h1 style={{ textAlign: 'center' }}>All Cases</h1>
+      <h2 style={{ textAlign: 'center' }}>All Cases</h2>
     </Header>
 
     {
