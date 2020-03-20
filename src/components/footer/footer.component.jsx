@@ -2,14 +2,15 @@ import React from 'react';
 
 import { Footer } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
-import { FooterText } from './footer.styles';
+import { FooterText, FooterLink } from './footer.styles';
 
 const FooterComponent = () => {
   const date = new Date()
   const year = date.getFullYear();
   return (
     <Footer style={{ padding: '20px' }}>
-      <FooterText>Collins Muriuki &copy; {year}</FooterText>
+      <FooterText>
+        <FooterLink href='https://muriuki.dev'>Collins Muriuki</FooterLink> &copy; {year}</FooterText>
     </Footer>
   )
 };

@@ -12,7 +12,7 @@ const HeaderComponent = () => (
         <Navbar.Body>
           <Nav>
             <Link to='/'>
-              <Nav.Item icon={<Icon icon="dashboard" />}>Home</Nav.Item>
+              <Nav.Item icon={<Icon icon="dashboard" />}>Monitor</Nav.Item>
             </Link>
             <Link to='/countries'>
               <Nav.Item>Countries</Nav.Item>
@@ -26,9 +26,6 @@ const HeaderComponent = () => (
               </a>
               <a href='https://github.com/collinsmuriuki/COVID-19-monitor'>
                 <Dropdown.Item>Repository</Dropdown.Item>
-              </a>
-              <a href='https://muriuki.dev'>
-                <Dropdown.Item>Website</Dropdown.Item>
               </a>
             </Dropdown>
           </Nav>
