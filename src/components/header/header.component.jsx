@@ -17,9 +17,9 @@ const HeaderComponent = () => (
             <Link to='/countries'>
               <Nav.Item>Countries</Nav.Item>
             </Link>
-            {/* <Link to='/news'>
+            <Link to='/news'>
               <Nav.Item>News</Nav.Item>
-            </Link> */}
+            </Link>
             <Dropdown title="About" icon={<Icon icon="github" />}>
               <a href='https://github.com/collinsmuriuki'>
                 <Dropdown.Item>Author</Dropdown.Item>

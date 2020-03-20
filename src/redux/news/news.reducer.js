@@ -1,7 +1,11 @@
 import { newsActionTypes } from './news.types';
 
 const INITIAL_STATE = {
-  articles: {},
+  articles: {
+    status: '',
+    totalResults: null,
+    articles: []
+  },
   isFetching: false,
   errorMessage: undefined
 };

@@ -16,17 +16,24 @@ class NewsPage extends React.Component {
 
   render() {
     const { loading, articles } = this.props;
-    // TODO: FIX ARTICLES
-    console.log(articles);
+    const filteredArticles = articles.filter(({ title }) => 
+      title.toLowerCase().includes('coronavirus' || 'covid-19' || 'covid19' || 
+                                   'virus' || 'outbreak' || 'pandemic'))
     return (
       <div>
-        <h2>News</h2>
+        <h2 style={{textAlign: 'center'}}>News</h2>
         {
           loading ? <PlaceholderPanels rows={4} />
           : 
-          <div>
-            <ArticlePanel />
-          </div>
+          filteredArticles.map(({ source: { name }, title, description, url, publishedAt  }) => (
+            <ArticlePanel 
+            source={name} 
+            title={title} 
+            description={description} 
+            url={url} 
+            publishedAt={publishedAt} 
+            />
+          ))
         }
       </div>
     )
