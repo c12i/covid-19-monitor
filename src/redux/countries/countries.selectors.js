@@ -7,6 +7,11 @@ export const selectCountries = createSelector(
   data => data.countries
 );
 
+export const selectCountryCount = createSelector(
+  [selectCountriesCases],
+  data => data.countries.length
+);
+
 export const selectIsFetching = createSelector(
   [selectCountriesCases],
   data => data.isFetching

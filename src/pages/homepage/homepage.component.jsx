@@ -2,13 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { fetchAllAsync } from '../../redux/all/all.actions';
+import { fetchCountriesAsync } from '../../redux/countries/countries.actions';
 
 import Jumbotron from '../../components/jumbotron/jumbotron.component'
 
 class HomePage extends React.Component {
   componentDidMount() {
-    const { fetchAllAsync } = this.props;
+    const { fetchAllAsync, fetchCountriesAsync } = this.props;
     fetchAllAsync();
+    fetchCountriesAsync();
   }
 
   render() {
@@ -22,7 +24,8 @@ class HomePage extends React.Component {
 }
 
 const mapDispatchToProps = dispatch =>({
-  fetchAllAsync: () => dispatch(fetchAllAsync())
+  fetchAllAsync: () => dispatch(fetchAllAsync()),
+  fetchCountriesAsync: () => dispatch(fetchCountriesAsync())
 });
 
 export default connect(null, mapDispatchToProps)(HomePage);

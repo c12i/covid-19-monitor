@@ -2,22 +2,31 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { Header } from 'rsuite';
+import { Header, Icon } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
+import { Key } from './jumbotron.styles';
 
-import { selectErrorMessage, selectIsFetching } from '../../redux/all/all.selectors';
+import { selectIsFetching } from '../../redux/all/all.selectors';
+import { selectIsFetching as isGettingCount } from '../../redux/countries/countries.selectors';
+import { selectCountryCount } from '../../redux/countries/countries.selectors';
 
 import LoaderComponent from '../loader/loader.component';
 import AllCases from '../all-cases/all-cases.component';
 
-const Jumbotron = ({ loading, error }) => (
+const Jumbotron = ({ loading, count, loadingCount }) => (
   <div>
-    <Header>
-      <h2 style={{ textAlign: 'center' }}>All Cases</h2>
+    <Header style={{margin: '20px'}}>
+      <h3 style={{ textAlign: 'center' }}>
+        <Key>
+          {
+            loadingCount ? <Icon icon="spinner" spin /> :
+            count
+          }
+        </Key>  countries with reported cases</h3>
     </Header>
-
+    
     {
-      loading ? <LoaderComponent rows={6} spinner>Loading...</LoaderComponent> :
+      loading ? <LoaderComponent rows={5} spinner>Loading...</LoaderComponent> :
       <AllCases />
     }
 
@@ -26,7 +35,8 @@ const Jumbotron = ({ loading, error }) => (
 
 const mapStateToProps = createStructuredSelector({
   loading: selectIsFetching,
-  error: selectErrorMessage
+  count: selectCountryCount,
+  loadingCount: isGettingCount
 });
 
 export default connect(mapStateToProps)(Jumbotron);
