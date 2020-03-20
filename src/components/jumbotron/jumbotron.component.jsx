@@ -17,7 +17,7 @@ import PieChartComponent from '../pie-chart/pie-chart.component';
 const Jumbotron = ({ loading, count, loadingCount, all }) => {
   const { cases, deaths, recovered } = all;
 
-  const activeCases = cases - recovered;
+  const activeCases = cases - recovered - deaths;
 
   const activePercentage = Math.round((activeCases/cases) * 100);
   const deathPercentage = Math.round((deaths/cases) * 100);
