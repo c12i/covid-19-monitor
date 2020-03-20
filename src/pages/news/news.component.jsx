@@ -21,7 +21,7 @@ class NewsPage extends React.Component {
                                    'virus' || 'outbreak' || 'pandemic'))
     return (
       <div>
-        <h2 style={{textAlign: 'center'}}>News</h2>
+        <h3 style={{textAlign: 'center', margin: '20px'}}>News</h3>
         {
           loading ? <PlaceholderPanels rows={4} />
           : 
