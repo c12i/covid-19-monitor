@@ -6,7 +6,7 @@ import { Header, Icon, Divider } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
 import { Key } from './jumbotron.styles';
 
-import { computePercentageData } from './jumbotron.utils';
+import { computePercentageData } from '../../utils/compute-data.utils';
 
 import { selectIsFetching, selectAll } from '../../redux/all/all.selectors';
 import { selectIsFetching as isGettingCount } from '../../redux/countries/countries.selectors';
