@@ -6,6 +6,8 @@ import { Header, Icon, Divider } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
 import { Key } from './jumbotron.styles';
 
+import { computePercentageData } from './jumbotron.utils';
+
 import { selectIsFetching, selectAll } from '../../redux/all/all.selectors';
 import { selectIsFetching as isGettingCount } from '../../redux/countries/countries.selectors';
 import { selectCountryCount } from '../../redux/countries/countries.selectors';
@@ -16,20 +18,7 @@ import PieChartComponent from '../pie-chart/pie-chart.component';
 
 const Jumbotron = ({ loading, count, loadingCount, all }) => {
   const { cases, deaths, recovered } = all;
-
-  const activeCases = cases - recovered - deaths;
-
-  const activePercentage = Math.round((activeCases/cases) * 100);
-  const deathPercentage = Math.round((deaths/cases) * 100);
-  const recoveredPercentage = Math.round((recovered/cases) * 100);
-
-  console.log(activePercentage, deathPercentage, recoveredPercentage);
-
-  const data = [
-    ['Active Cases %', activePercentage],
-    ['Deaths %', deathPercentage],
-    ['Recoveries %', recoveredPercentage]
-  ];
+  const data = computePercentageData(cases, deaths, recovered);
 
   return (
     <div>
@@ -38,7 +27,7 @@ const Jumbotron = ({ loading, count, loadingCount, all }) => {
           <Key>
             {
               loadingCount ? <Icon icon="spinner" spin /> :
-                count
+              count
             }
           </Key>  countries with reported cases</h3>
           <Divider />
@@ -48,7 +37,6 @@ const Jumbotron = ({ loading, count, loadingCount, all }) => {
         loading ? <LoaderComponent rows={5} spinner>Loading...</LoaderComponent> :
           <AllCases />
       }
-
     </div>
   )
 };
