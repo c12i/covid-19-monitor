@@ -10,7 +10,8 @@ const FooterComponent = () => {
   return (
     <Footer style={{ padding: '20px' }}>
       <FooterText>
-        <FooterLink href='https://muriuki.dev'>Collins Muriuki</FooterLink> &copy; {year}</FooterText>
+        <FooterLink href='https://muriuki.dev'>Collins Muriuki</FooterLink> &copy; {year}
+      </FooterText>
     </Footer>
   )
 };

@@ -15,7 +15,7 @@ const ArticlePanel = ({ source, title, description, url, publishedAt }) => {
       <Key>{source}</Key> 
       <Divider vertical />
       {date.toDateString()}
-      </small>
+    </small>
   </Panel>
 )};
 
