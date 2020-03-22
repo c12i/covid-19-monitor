@@ -11,7 +11,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/038a355b-106e-447d-8247-59f2adb15a68/deploy-status)](https://app.netlify.com/sites/covid19monitorapp/deploys)
 
-> View live updates on the COVID-19 situation in the world. API courtesy of https://github.com/NovelCOVID/API
+> View live updates on the COVID-19 situation in the world. API courtesy of [@NOVELCOVID](https://github.com/NovelCOVID/API). News articles fetched from the [News API](https://newsapi.org/).
 
 ### ✨ [Demo](https://covid19monitorapp.netlify.com/)
 
