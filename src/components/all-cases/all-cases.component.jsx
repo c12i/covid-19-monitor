@@ -18,7 +18,7 @@ const AllCases = ({ all }) => {
         <h4><Key>Deaths</Key> <Divider vertical /> {deaths}</h4>
         <h4><Key>Recovered</Key> <Divider vertical /> {recovered}</h4>
         <br />
-        <small>Updated on {formatedDate.toDateString()} {formatedDate.toLocaleTimeString()}</small>
+        <small>Updated on {formatedDate.toString()}</small>
       </AllCasesContainer>
     </Panel>
   )
