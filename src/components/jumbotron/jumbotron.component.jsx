@@ -29,7 +29,7 @@ const Jumbotron = ({ loading, count, loadingCount, all }) => {
               loadingCount ? <Icon icon="spinner" spin /> :
               count
             }
-          </Key>  countries with reported cases</h3>
+          </Key>  territories with reported cases</h3>
           <Divider />
       </Header>
       <PieChartComponent data={data} />
