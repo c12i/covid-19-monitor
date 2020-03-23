@@ -49,13 +49,15 @@ class CountriesPage extends React.Component {
 
         {
           !loading ? 
-          filteredCountries.map(({ country, cases, deaths, recovered, active }) => (
+          filteredCountries.map(({ country, cases, deaths, recovered, active, todayCases, todayDeaths }) => (
             <CountryPanel 
             country={country}
             cases={cases}
             deaths={deaths}
             recovered={recovered}
-            active={active} />
+            active={active}
+            todayCases={todayCases}
+            todayDeaths={todayDeaths} />
           )) :
             <PlaceholderPanels rows={6} />
         }

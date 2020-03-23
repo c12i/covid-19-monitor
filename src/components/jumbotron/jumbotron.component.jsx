@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { Header, Icon, Divider } from 'rsuite';
+import { Header, Divider, Loader } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
 import { Key } from './jumbotron.styles';
 
@@ -26,7 +26,7 @@ const Jumbotron = ({ loading, count, loadingCount, all }) => {
         <h3 style={{ textAlign: 'center' }}>
           <Key>
             {
-              loadingCount ? <Icon icon="spinner" spin /> :
+              loadingCount ? <Loader /> :
               count
             }
           </Key>  territories with reported cases</h3>
