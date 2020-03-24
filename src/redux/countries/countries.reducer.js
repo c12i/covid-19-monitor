@@ -24,7 +24,7 @@ const countriesReducer = (state = INITIAL_STATE, action) => {
     case countriesActionTypes.FETCH_COUNTRIES_CASES_FAIL:
       return {
         ...state,
-        isFetching: false,
+        isFetching: true,
         errorMessage: action.payload
       };
 

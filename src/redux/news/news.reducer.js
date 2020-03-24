@@ -28,7 +28,7 @@ const newsReducer = (state = INITIAL_STATE, action) => {
     case newsActionTypes.FETCH_NEWS_FAIL:
       return {
         ...state,
-        isFetching: false,
+        isFetching: true,
         errorMessage: action.payload
       };
 
