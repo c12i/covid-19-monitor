@@ -2,45 +2,38 @@ import React from 'react';
 
 import { Panel, Icon, Whisper, Tooltip } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
-import { Key } from './country-panel.styles';
+import { Key, ContainerP, CountryHeader } from './country-panel.styles';
 
 import { getKey } from '../../utils/get-key.utils';
 
 
 const CountryPanel = ({ country, cases, deaths, recovered, active, todayCases, todayDeaths }) => {
-  const caseTooltip = (
+  const toolTip = content => (
     <Tooltip>
-      <i>{ todayCases } today</i>
-    </Tooltip>
-  ); 
-  
-  const deathTooltip = (
-    <Tooltip>
-      <i>{ todayDeaths } today</i>
+      <i>{ content } today</i>
     </Tooltip>
   );
-
   return (
   <Panel style={{ marginBottom: '10px' }} key={getKey(country)} bordered>
-    <h3>{country}</h3>
-    <p>
+    <CountryHeader>{country}</CountryHeader>
+    <ContainerP>
       <Key>Cases</Key>: {cases} { todayCases > 0 ? 
-      <Whisper placement='right' trigger='hover' speaker={caseTooltip}>
+      <Whisper placement='right' trigger='hover' speaker={toolTip(todayCases)}>
         <Icon icon='angle-double-up' style={{color:'green', cursor:'pointer'}} />
       </Whisper>  : null }
-    </p>
-    <p>
+    </ContainerP>
+    <ContainerP>
       <Key>Deaths</Key>: {deaths} { todayDeaths > 0 ?  
-      <Whisper placement='right' trigger='hover' speaker={deathTooltip}>
+      <Whisper placement='right' trigger='hover' speaker={toolTip(todayDeaths)}>
         <Icon icon='angle-double-up' style={{color:'green', cursor:'pointer'}} /> 
       </Whisper> : null }
-    </p>
-    <p>
+    </ContainerP>
+    <ContainerP>
       <Key>Recovered</Key>: {recovered}
-    </p>
-    <p>
+    </ContainerP>
+    <ContainerP>
       <Key>Active</Key>: {active}
-    </p>
+    </ContainerP>
   </Panel>
 )};
 
