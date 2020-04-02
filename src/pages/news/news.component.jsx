@@ -5,6 +5,8 @@ import { createStructuredSelector } from 'reselect';
 import { fetchNewsAsync } from '../../redux/news/news.actions';
 import { selectNewsArticles, selectIsFetching } from '../../redux/news/news.selectors';
 
+import { filterNews } from '../../utils/filter-articles.utils';
+
 import ArticlePanel from '../../components/article-panel/article-panel.component';
 import PlaceholderPanels from '../../components/placeholders/placeholders.component';
 
@@ -13,16 +15,13 @@ const NewsPage = ({ fetchNewsAsync, loading, articles }) => {
     fetchNewsAsync();
   }, [fetchNewsAsync]);
 
-  const filteredArticles = articles.filter(({ title }) => 
-      title.toLowerCase().includes('coronavirus' || 'covid-19' || 'covid19' || 
-                                   'virus' || 'outbreak' || 'pandemic'));
   return (
     <div>
       <h3 style={{textAlign: 'center', margin: '20px'}}>News</h3>
       {
         loading ? <PlaceholderPanels rows={4} />
         : 
-        filteredArticles.map(({ source: { name }, title, description, url, publishedAt  }) => (
+        filterNews(articles).map(({ source: { name }, title, description, url, publishedAt  }) => (
           <ArticlePanel 
           source={name} 
           title={title} 
