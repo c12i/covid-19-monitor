@@ -36,15 +36,8 @@ const CountriesPage = ({ fetchCountriesAsync, countries, loading }) => {
 
       {
         !loading ? 
-        filteredCountries.map(({ country, cases, deaths, recovered, active, todayCases, todayDeaths }) => (
-          <CountryPanel 
-          country={country}
-          cases={cases}
-          deaths={deaths}
-          recovered={recovered}
-          active={active}
-          todayCases={todayCases}
-          todayDeaths={todayDeaths} />
+        filteredCountries.map(country => (
+          <CountryPanel {...country} />
         )) :
           <PlaceholderPanels rows={6} />
       }
