@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
@@ -8,36 +8,32 @@ import { selectNewsArticles, selectIsFetching } from '../../redux/news/news.sele
 import ArticlePanel from '../../components/article-panel/article-panel.component';
 import PlaceholderPanels from '../../components/placeholders/placeholders.component';
 
-class NewsPage extends React.Component {
-  componentDidMount() {
-    const { fetchNewsAsync } = this.props;
+const NewsPage = ({ fetchNewsAsync, loading, articles }) => {
+  useEffect(() => {
     fetchNewsAsync();
-  }
+  }, [fetchNewsAsync]);
 
-  render() {
-    const { loading, articles } = this.props;
-    const filteredArticles = articles.filter(({ title }) => 
+  const filteredArticles = articles.filter(({ title }) => 
       title.toLowerCase().includes('coronavirus' || 'covid-19' || 'covid19' || 
-                                   'virus' || 'outbreak' || 'pandemic'))
-    return (
-      <div>
-        <h3 style={{textAlign: 'center', margin: '20px'}}>News</h3>
-        {
-          loading ? <PlaceholderPanels rows={4} />
-          : 
-          filteredArticles.map(({ source: { name }, title, description, url, publishedAt  }) => (
-            <ArticlePanel 
-            source={name} 
-            title={title} 
-            description={description} 
-            url={url} 
-            publishedAt={publishedAt} 
-            />
-          ))
-        }
-      </div>
-    )
-  }
+                                   'virus' || 'outbreak' || 'pandemic'));
+  return (
+    <div>
+      <h3 style={{textAlign: 'center', margin: '20px'}}>News</h3>
+      {
+        loading ? <PlaceholderPanels rows={4} />
+        : 
+        filteredArticles.map(({ source: { name }, title, description, url, publishedAt  }) => (
+          <ArticlePanel 
+          source={name} 
+          title={title} 
+          description={description} 
+          url={url} 
+          publishedAt={publishedAt} 
+          />
+        ))
+      }
+    </div>
+  )
 };
 
 const mapStateToProps = createStructuredSelector({
