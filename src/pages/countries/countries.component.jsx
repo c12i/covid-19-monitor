@@ -11,7 +11,7 @@ import PlaceholderPanels from '../../components/placeholders/placeholders.compon
 import CountryPanel from '../../components/country-panel/country-panel.component';
 
 const CountriesPage = ({ fetchCountriesAsync, countries, loading }) => {
-  const [ searchField, setSearchField ] = useState('kenya');
+  const [ searchField, setSearchField ] = useState('');
 
   const handleChange = event => {
     setSearchField(event.target.value);
