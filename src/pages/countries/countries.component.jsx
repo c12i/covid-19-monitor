@@ -13,8 +13,8 @@ import CountryPanel from '../../components/country-panel/country-panel.component
 const CountriesPage = ({ fetchCountriesAsync, countries, loading }) => {
   const [ searchField, setSearchField ] = useState('');
 
-  const handleChange = event => {
-    setSearchField(event.target.value);
+  const handleChange = ({ target: { value } }) => {
+    setSearchField(value);
   };
 
   useEffect(() => {
