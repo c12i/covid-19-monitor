@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
@@ -10,61 +10,47 @@ import SearchForm from '../../components/search-form/search-form.component';
 import PlaceholderPanels from '../../components/placeholders/placeholders.component';
 import CountryPanel from '../../components/country-panel/country-panel.component';
 
-class CountriesPage extends React.Component {
-  constructor() {
-    super();
+const CountriesPage = ({ fetchCountriesAsync, countries, loading }) => {
+  const [ searchField, setSearchField ] = useState('kenya');
 
-    this.state = {
-      searchField: ''
-    };
+  const handleChange = event => {
+    setSearchField(event.target.value);
   };
 
-  handleChange = event => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
-  }
-
-  componentDidMount() {
-    const { fetchCountriesAsync } = this.props;
+  useEffect(() => {
     fetchCountriesAsync();
-  };
+  }, [fetchCountriesAsync]);
+  
+  const filteredCountries = countries.filter(({ country }) => 
+    country.toLowerCase().includes(searchField.toLowerCase()));
 
+  return (
+    <div>
+      <br />
+      <SearchForm 
+      name={'searchField'}
+      value={searchField}
+      handleChange={handleChange} 
+      />
+      <br />
 
-  render() {
-    const { searchField } = this.state;
-    const { countries, loading } = this.props;
+      {
+        !loading ? 
+        filteredCountries.map(({ country, cases, deaths, recovered, active, todayCases, todayDeaths }) => (
+          <CountryPanel 
+          country={country}
+          cases={cases}
+          deaths={deaths}
+          recovered={recovered}
+          active={active}
+          todayCases={todayCases}
+          todayDeaths={todayDeaths} />
+        )) :
+          <PlaceholderPanels rows={6} />
+      }
 
-    const filteredCountries = countries.filter(({ country }) => 
-      country.toLowerCase().includes(searchField.toLowerCase()));
-
-    return (
-      <div>
-        <br />
-        <SearchForm 
-        name={'searchField'}
-        value={searchField}
-        handleChange={this.handleChange} 
-        />
-        <br />
-
-        {
-          !loading ? 
-          filteredCountries.map(({ country, cases, deaths, recovered, active, todayCases, todayDeaths }) => (
-            <CountryPanel 
-            country={country}
-            cases={cases}
-            deaths={deaths}
-            recovered={recovered}
-            active={active}
-            todayCases={todayCases}
-            todayDeaths={todayDeaths} />
-          )) :
-            <PlaceholderPanels rows={6} />
-        }
-
-      </div>
-    )
-  }
+    </div>
+  )
 };
 
 const mapStateToProps = createStructuredSelector({
