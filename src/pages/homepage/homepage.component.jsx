@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { fetchAllAsync } from '../../redux/all/all.actions';
@@ -6,21 +6,17 @@ import { fetchCountriesAsync } from '../../redux/countries/countries.actions';
 
 import Jumbotron from '../../components/jumbotron/jumbotron.component'
 
-class HomePage extends React.Component {
-  componentDidMount() {
-    const { fetchAllAsync, fetchCountriesAsync } = this.props;
+const HomePage = ({ fetchAllAsync, fetchCountriesAsync }) => {
+  useEffect(() => {
     fetchAllAsync();
     fetchCountriesAsync();
-  }
+  }, [fetchAllAsync, fetchCountriesAsync]);
 
-  render() {
-
-    return (
-      <div>
-        <Jumbotron />
-      </div>
-    )
-  }
+  return (
+    <div>
+      <Jumbotron />
+    </div>
+  )
 }
 
 const mapDispatchToProps = dispatch =>({
