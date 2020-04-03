@@ -1,3 +1,2 @@
-export const filterNews = articles => articles.filter(({ title }) => 
-title.toLowerCase().includes('coronavirus' || 'covid-19' || 'covid19' || 
-                             'virus' || 'outbreak' || 'pandemic'));
+export const filterNews = articles => articles.filter(article => 
+article.title.toLowerCase().includes('coronavirus' || 'covid-19' || 'covid19' || 'outbreak' || 'pandemic'));
