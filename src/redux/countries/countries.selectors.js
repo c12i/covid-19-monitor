@@ -7,6 +7,11 @@ export const selectCountries = createSelector(
   data => data.countries
 );
 
+export const selectCountry = createSelector(
+  [selectCountriesCases],
+  data => data.country
+);
+
 export const selectCountryCount = createSelector(
   [selectCountriesCases],
   data => data.countries.filter(({ country }) => country !== 'World').length

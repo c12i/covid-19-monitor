@@ -6,6 +6,7 @@ import { fetchNewsAsync } from '../../redux/news/news.actions';
 import { selectNewsArticles, selectIsFetching } from '../../redux/news/news.selectors';
 
 import { filterNews } from '../../utils/filter-articles.utils';
+import { getKey } from '../../utils/get-key.utils';
 
 import ArticlePanel from '../../components/article-panel/article-panel.component';
 import PlaceholderPanels from '../../components/placeholders/placeholders.component';
@@ -23,6 +24,7 @@ const NewsPage = ({ fetchNewsAsync, loading, articles }) => {
         : 
         filterNews(articles).map(({ source: { name }, title, description, url, publishedAt  }) => (
           <ArticlePanel 
+          key={getKey(name)}
           source={name} 
           title={title} 
           description={description} 
