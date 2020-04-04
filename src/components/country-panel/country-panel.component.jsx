@@ -5,9 +5,6 @@ import { Panel, Icon, Whisper, Tooltip } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
 import { Key, ContainerP, CountryHeader } from './country-panel.styles';
 
-import { getKey } from '../../utils/get-key.utils';
-
-
 const CountryPanel = ({ country, cases, deaths, recovered, active, todayCases, todayDeaths, history, match }) => {
   const toolTip = content => (
     <Tooltip>
@@ -15,7 +12,7 @@ const CountryPanel = ({ country, cases, deaths, recovered, active, todayCases, t
     </Tooltip>
   );
   return (
-  <Panel style={{ marginBottom: '10px' }} key={getKey(country)} bordered>
+  <Panel style={{ marginBottom: '10px' }} bordered>
     <CountryHeader onClick={() => history.push(`${match.url}/${country}`)}>
       {country}
     </CountryHeader>

@@ -6,7 +6,6 @@ import 'rsuite/dist/styles/rsuite-dark.css';
 
 import HomPage from './pages/homepage/homepage.component';
 import CountriesPage from './pages/countries/countries.component';
-import CountryPage from './pages/country/country.component';
 import NewsPage from './pages/news/news.component';
 import HeaderComponent from './components/header/header.component';
 import FooterComponent from './components/footer/footer.component';

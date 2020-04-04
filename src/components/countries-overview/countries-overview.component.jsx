@@ -6,6 +6,8 @@ import SearchForm from '../search-form/search-form.component';
 import PlaceholderPanels from '../placeholders/placeholders.component';
 import CountryPanel from '../country-panel/country-panel.component';
 
+import { getKey } from '../../utils/get-key.utils';
+
 import { fetchCountriesAsync } from '../../redux/countries/countries.actions';
 
 import { selectCountries, selectIsFetching } from '../../redux/countries/countries.selectors';
@@ -38,7 +40,7 @@ const CountriesOverview = ({ loading, countries, fetchCountriesAsync }) => {
       {
         !loading ?
           filteredCountries.map(country => (
-            <CountryPanel {...country} />
+            <CountryPanel key={getKey(country.country)} {...country} />
           )) :
           <PlaceholderPanels rows={6} />
       }
