@@ -2,7 +2,15 @@ import {countriesActionTypes } from './countries.types';
 
 const INITIAL_STATE = {
   countries: [],
-  country: {},
+  country: {
+    country: null,
+    provinces: null,
+    timeline: {
+      cases: {},
+      deaths: {},
+      recovered: {}
+    }
+  },
   isFetching: false,
   errorMessage: undefined
 };

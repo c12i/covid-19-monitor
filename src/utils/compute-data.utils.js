@@ -11,3 +11,19 @@ export const computePercentageData = (cases, deaths, recovered) => {
     ['Recovered %', recoveredPercentage]
   ];
 }
+
+export const computeLineGraphData = (xAxis, cases, deaths, recovered) => {
+  const finalData = [];
+  for (let x of xAxis) {
+    for (let c of cases) {
+      for (let d of deaths) {
+        for (let r of recovered) {
+          finalData.push([x, c, d, r]);
+        }
+      }
+    }
+    break;
+  }
+
+  return finalData;
+}
