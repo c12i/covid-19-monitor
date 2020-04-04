@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 import { Panel, Icon, Whisper, Tooltip } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
@@ -7,7 +8,7 @@ import { Key, ContainerP, CountryHeader } from './country-panel.styles';
 import { getKey } from '../../utils/get-key.utils';
 
 
-const CountryPanel = ({ country, cases, deaths, recovered, active, todayCases, todayDeaths }) => {
+const CountryPanel = ({ country, cases, deaths, recovered, active, todayCases, todayDeaths, history, match }) => {
   const toolTip = content => (
     <Tooltip>
       <i>{ content } today</i>
@@ -15,7 +16,9 @@ const CountryPanel = ({ country, cases, deaths, recovered, active, todayCases, t
   );
   return (
   <Panel style={{ marginBottom: '10px' }} key={getKey(country)} bordered>
-    <CountryHeader>{country}</CountryHeader>
+    <CountryHeader onClick={() => history.push(`${match.url}/${country}`)}>
+      {country}
+    </CountryHeader>
     <ContainerP>
       <Key>Cases</Key>: {cases} { todayCases > 0 ? 
       <Whisper placement='right' trigger='hover' speaker={toolTip(todayCases)}>
@@ -37,4 +40,4 @@ const CountryPanel = ({ country, cases, deaths, recovered, active, todayCases, t
   </Panel>
 )};
 
-export default CountryPanel;
+export default withRouter(CountryPanel);

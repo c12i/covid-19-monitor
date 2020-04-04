@@ -1,59 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import React from 'react';
+import { Route } from 'react-router-dom';
 
-import { fetchCountriesAsync } from '../../redux/countries/countries.actions';
+import CountriesOverview from '../../components/countries-overview/countries-overview.component';
+import CountryPage from '../country/country.component';
 
-import { selectCountries, selectIsFetching } from '../../redux/countries/countries.selectors';
-
-import SearchForm from '../../components/search-form/search-form.component';
-import PlaceholderPanels from '../../components/placeholders/placeholders.component';
-import CountryPanel from '../../components/country-panel/country-panel.component';
-
-const CountriesPage = ({ fetchCountriesAsync, countries, loading }) => {
-  const [ searchField, setSearchField ] = useState('');
-
-  const handleChange = ({ target: { value } }) => {
-    setSearchField(value);
-  };
-
-  useEffect(() => {
-    fetchCountriesAsync();
-  }, [fetchCountriesAsync]);
-
-  const withoutWorld = countries.filter(({ country }) => country !== 'World');
-  const filteredCountries = withoutWorld.filter(({ country }) => 
-    country.toLowerCase().includes(searchField.toLowerCase()));
+const CountriesPage = ({ match }) => {
 
   return (
     <div>
-      <br />
-      <SearchForm 
-      name='searchField'
-      value={searchField}
-      handleChange={handleChange} 
-      />
-      <br />
-
-      {
-        !loading ? 
-        filteredCountries.map(country => (
-          <CountryPanel {...country} />
-        )) :
-          <PlaceholderPanels rows={6} />
-      }
-
+      <Route exact path={`${match.path}`} component={CountriesOverview} />
+      <Route exact path={`${match.path}/:countryId`} component={CountryPage} />
     </div>
   )
 };
 
-const mapStateToProps = createStructuredSelector({
-  countries: selectCountries,
-  loading: selectIsFetching
-});
-
-const mapDispatchToProps = dispatch => ({
-  fetchCountriesAsync: () => dispatch(fetchCountriesAsync())
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(CountriesPage);
+export default CountriesPage;
