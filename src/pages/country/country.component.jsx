@@ -12,6 +12,8 @@ import { Previous } from './country.styles';
 
 // import { computeLineGraphData } from '../../utils/compute-data.utils';
 
+import LoaderComponent from '../../components/loader/loader.component';
+
 import { fetchCountryAsync } from '../../redux/countries/countries.actions';
 import { selectCountry, selectIsFetching } from '../../redux/countries/countries.selectors';
 
@@ -32,8 +34,14 @@ const CountryPage = ({ match, history, territory, loading, fetchCountryAsync }) 
       <br />
       <Previous to='/countries' style> &#x2B05; Back</Previous>
       <Panel>
-        <h3 style={{textAlign: 'center'}}>{country}</h3>
-        <p style={{textAlign: 'center'}}>Charts coming soon :)</p>
+        {
+          loading ? <LoaderComponent /> : (
+            <div>
+               <h3 style={{textAlign: 'center'}}>{country}</h3>
+               <p style={{textAlign: 'center'}}>Charts coming soon :)</p>
+            </div>
+          )
+        }
       </Panel>
     </div>
   )
