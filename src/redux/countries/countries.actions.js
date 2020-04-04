@@ -28,3 +28,27 @@ export const fetchCountriesAsync = () => {
       });
   };
 };
+
+export const fetchCountryStart = () => ({
+  type: countriesActionTypes.FETCH_COUNTRY_START
+});
+
+export const fetchCountrySuccess = country => ({
+  type: countriesActionTypes.FETCH_COUNTRY_SUCCESS,
+  payload: country
+});
+
+export const fetchCountryFail = errorMessage => ({
+  type: countriesActionTypes.FETCH_COUNTRY_FAIL,
+  payload: errorMessage
+});
+
+export const fetchCountryAsync = country => {
+  return dispatch => {
+    dispatch(fetchCountryStart());
+    fetch(`https://corona.lmao.ninja/v2/historical/${country.toLowerCase()}`)
+      .then(response => response.json())
+      .then(data => dispatch(fetchCountrySuccess(data)))
+      .catch(error => dispatch(fetchCountryFail(error)))
+  }
+};

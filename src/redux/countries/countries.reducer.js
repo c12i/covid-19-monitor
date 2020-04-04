@@ -2,6 +2,7 @@ import {countriesActionTypes } from './countries.types';
 
 const INITIAL_STATE = {
   countries: [],
+  country: {},
   isFetching: false,
   errorMessage: undefined
 };
@@ -9,6 +10,7 @@ const INITIAL_STATE = {
 const countriesReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case countriesActionTypes.FETCH_COUNTRIES_CASES_START:
+    case countriesActionTypes.FETCH_COUNTRY_START:
       return {
         ...state,
         isFetching: true
@@ -21,7 +23,15 @@ const countriesReducer = (state = INITIAL_STATE, action) => {
         isFetching: false
       };
 
+    case countriesActionTypes.FETCH_COUNTRY_SUCCESS:
+      return {
+        ...state,
+        country: {...action.payload},
+        isFetching: false
+      }
+
     case countriesActionTypes.FETCH_COUNTRIES_CASES_FAIL:
+    case countriesActionTypes.FETCH_COUNTRY_FAIL:
       return {
         ...state,
         isFetching: true,
