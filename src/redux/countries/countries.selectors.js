@@ -9,7 +9,7 @@ export const selectCountries = createSelector(
 
 export const selectCountryCount = createSelector(
   [selectCountriesCases],
-  data => data.countries.length
+  data => data.countries.filter(({ country }) => country !== 'World').length
 );
 
 export const selectIsFetching = createSelector(

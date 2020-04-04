@@ -20,8 +20,8 @@ const CountriesPage = ({ fetchCountriesAsync, countries, loading }) => {
   useEffect(() => {
     fetchCountriesAsync();
   }, [fetchCountriesAsync]);
-  
-  const filteredCountries = countries.filter(({ country }) => 
+  const withoutWorld = countries.filter(({ country }) => country !== 'World');
+  const filteredCountries = withoutWorld.filter(({ country }) => 
     country.toLowerCase().includes(searchField.toLowerCase()));
 
   return (
