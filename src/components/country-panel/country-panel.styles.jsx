@@ -10,4 +10,9 @@ export const ContainerP = styled.p`
 
 export const CountryHeader = styled.h3`
   display: block;
+  cursor: pointer;
+
+  &:hover {
+    color: #3498FF;
+  }
 `;
