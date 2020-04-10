@@ -7,6 +7,7 @@ import PlaceholderPanels from '../placeholders/placeholders.component';
 import CountryPanel from '../country-panel/country-panel.component';
 
 import { getKey } from '../../utils/get-key.utils';
+import { filterCountriesfromContinents } from '../../utils/filer-countries.utils';
 
 import { fetchCountriesAsync } from '../../redux/countries/countries.actions';
 
@@ -23,7 +24,7 @@ const CountriesOverview = ({ loading, countries, fetchCountriesAsync }) => {
     setSearchField(value);
   };
 
-  const withoutWorld = countries.filter(({ country }) => country !== 'World');
+  const withoutWorld = filterCountriesfromContinents(countries);
   const filteredCountries = withoutWorld.filter(({ country }) => 
     country.toLowerCase().includes(searchField.toLowerCase()));
 

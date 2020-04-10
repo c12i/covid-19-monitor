@@ -1,0 +1,1 @@
+export const filterCountriesfromContinents = countries => countries.filter(({ country }) => country !== 'World' && country !== 'Africa' && country !== 'North America' && country !== 'Europe' && country !== 'South America' && country !== 'Asia' && country !== 'Oceania' && country !== '');

@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { filterCountriesfromContinents } from '../../utils/filer-countries.utils';
 
 const selectCountriesCases = state => state.countriesCases;
 
@@ -14,7 +15,7 @@ export const selectCountry = createSelector(
 
 export const selectCountryCount = createSelector(
   [selectCountriesCases],
-  data => data.countries.filter(({ country }) => country !== 'World').length
+  data => filterCountriesfromContinents(data.countries).length
 );
 
 export const selectIsFetching = createSelector(
