@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import { Container, Content } from 'rsuite';
+import { Container, Content, Loader, Placeholder } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-dark.css';
 
-import HomPage from './pages/homepage/homepage.component';
-import CountriesPage from './pages/countries/countries.component';
-import NewsPage from './pages/news/news.component';
 import HeaderComponent from './components/header/header.component';
 import FooterComponent from './components/footer/footer.component';
 
+const HomePage = lazy(() => import('./pages/homepage/homepage.component'));
+const CountriesPage = lazy(() => import('./pages/news/news.component'));
+const NewsPage = lazy(() => import('./pages/news/news.component'));
 
 const contentStyles = {
   margin: '0 5%',
@@ -23,12 +23,14 @@ const App = () => (
       <Container style={contentStyles}>
         <Content>
           <Switch>
-            <Route exact path='/' component={HomPage} />
-            <Route path='/countries' component={CountriesPage} />
-            <Route exact path='/news' component={NewsPage} />
+            <Suspense fallback={<Loader center content="loading" />}>
+              <Route exact path='/' component={HomePage} />
+              <Route path='/countries' component={CountriesPage} />
+              <Route exact path='/news' component={NewsPage} />
+              <FooterComponent />
+            </Suspense>
           </Switch>
         </Content>
-        <FooterComponent />
       </Container>
     </Container>
   </div>
