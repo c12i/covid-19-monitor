@@ -1,4 +1,4 @@
-import React, { useState, useEffect }from 'react';
+import React, { useState, useEffect, useCallback }from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
@@ -20,9 +20,9 @@ const CountriesOverview = ({ loading, countries, fetchCountriesAsync }) => {
     fetchCountriesAsync();
   }, [fetchCountriesAsync]);
 
-  const handleChange = ({ target: { value } }) => {
+  const handleChange = useCallback(({ target: { value } }) => {
     setSearchField(value);
-  };
+  }, []);
 
   const withoutWorld = filterCountriesfromContinents(countries);
   const filteredCountries = withoutWorld.filter(({ country }) => 
