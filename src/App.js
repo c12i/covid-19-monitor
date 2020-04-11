@@ -8,7 +8,7 @@ import HeaderComponent from './components/header/header.component';
 import FooterComponent from './components/footer/footer.component';
 
 const HomePage = lazy(() => import('./pages/homepage/homepage.component'));
-const CountriesPage = lazy(() => import('./pages/country/country.component'));
+const CountriesPage = lazy(() => import('./pages/countries/countries.component'));
 const NewsPage = lazy(() => import('./pages/news/news.component'));
 
 const contentStyles = {
