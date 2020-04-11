@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import { Container, Content, Loader, Placeholder } from 'rsuite';
+import { Container, Content, Loader } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-dark.css';
 
 import HeaderComponent from './components/header/header.component';
