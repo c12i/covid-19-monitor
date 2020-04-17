@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { Panel } from 'rsuite';
+import { Panel, Icon } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
 import { Previous } from './country.styles';
 
@@ -34,7 +34,7 @@ const CountryPage = ({ match, territory, loading, fetchCountryAsync }) => {
   return (
     <div>
       <br />
-      <Previous to='/countries' style> &#x2B05; Back</Previous>
+      <Previous to='/countries' style><Icon icon='arrow-left' /> Back</Previous>
       <Panel>
         {
           loading ? <LoaderComponent /> : (
