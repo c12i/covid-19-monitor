@@ -6,28 +6,30 @@ import { Panel } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
 import { Previous } from './country.styles';
 
-// import LineChart from '@rsuite/charts/lib/charts/LineChart';
-// import YAxis from '@rsuite/charts/lib/components/YAxis';
-// import Line from '@rsuite/charts/lib/series/Line';
+import BarChart from '@rsuite/charts/lib/charts/BarChart';
+import YAxis from '@rsuite/charts/lib/components/YAxis';
+import Bars from '@rsuite/charts/lib/series/Bars';
 
-// import { computeLineGraphData } from '../../utils/compute-data.utils';
+import { computeChartData, generateAxisLabel, checkMinimumInterval } from '../../utils/compute-data.utils';
+import { colors } from '../../utils/other.utils';
 
 import LoaderComponent from '../../components/loader/loader.component';
 
 import { fetchCountryAsync } from '../../redux/countries/countries.actions';
 import { selectCountry, selectIsFetching } from '../../redux/countries/countries.selectors';
 
-const CountryPage = ({ match, history, territory, loading, fetchCountryAsync }) => {
+const CountryPage = ({ match, territory, loading, fetchCountryAsync }) => {
   useEffect(() => {
     fetchCountryAsync(match.params.countryId);
   },[fetchCountryAsync, match.params.countryId]);
 
   const { country } = territory;
-
-  // const xAxis = Object.keys(cases);
-  // const casesLine = Object.values(cases);
-  // const deathsLine = Object.values(deaths);
-  // const recoveredLine = Object.values(recovered);
+  let data;
+  try {
+    data = computeChartData(territory);
+  } catch {
+    data = null;
+  }
 
   return (
     <div>
@@ -37,8 +39,11 @@ const CountryPage = ({ match, history, territory, loading, fetchCountryAsync }) 
         {
           loading ? <LoaderComponent /> : (
             <div>
-               <h3 style={{textAlign: 'center'}}>{country}</h3>
-               <p style={{textAlign: 'center'}}>Charts coming soon :)</p>
+               <h3 style={{textAlign: 'center'}}>{country} Statistics</h3>
+               <BarChart name={`${country} statistics`} data={data} >
+                <YAxis axisLabel={value => generateAxisLabel(value, territory)} minInterval={checkMinimumInterval(territory)} />
+                <Bars color={colors} label={({ value }) => value}/>
+              </BarChart>
             </div>
           )
         }

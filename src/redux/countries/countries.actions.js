@@ -46,7 +46,7 @@ export const fetchCountryFail = errorMessage => ({
 export const fetchCountryAsync = country => {
   return dispatch => {
     dispatch(fetchCountryStart());
-    fetch(`https://corona.lmao.ninja/v2/historical/${country.toLowerCase()}`)
+    fetch(`https://corona.lmao.ninja/v2/countries/${country.toLowerCase()}`)
       .then(response => response.json())
       .then(data => {dispatch(fetchCountrySuccess(data))})
       .catch(error => dispatch(fetchCountryFail(error)))

@@ -6,3 +6,7 @@ export const Previous = styled(Link)`
      text-decoration: none;
    } 
 `;
+
+export const SmallText = styled.small`
+  text-align: center;
+`;
