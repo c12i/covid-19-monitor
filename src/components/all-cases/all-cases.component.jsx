@@ -1,12 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
 
 import { Panel, Divider } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
 import { AllCasesContainer, Key } from './all-cases.styles';
-
-import { selectAll } from '../../redux/all/all.selectors';
 
 const AllCases = ({ all }) => {
   const { cases, deaths, recovered, updated } = all;
@@ -24,8 +20,4 @@ const AllCases = ({ all }) => {
   )
 };
 
-const mapStateToProps = createStructuredSelector({
-  all: selectAll
-});
-
-export default connect(mapStateToProps)(AllCases);
+export default AllCases;

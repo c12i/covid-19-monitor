@@ -12,11 +12,10 @@ import { selectIsFetching, selectAll } from '../../redux/all/all.selectors';
 import { selectIsFetching as isGettingCount } from '../../redux/countries/countries.selectors';
 import { selectCountryCount } from '../../redux/countries/countries.selectors';
 
-import LoaderComponent from '../loader/loader.component';
-import AllCases from '../all-cases/all-cases.component';
+import {default as AllCases} from '../all-cases/all-cases.container';
 import PieChartComponent from '../pie-chart/pie-chart.component';
 
-const Jumbotron = ({ loading, count, loadingCount, all }) => {
+const Jumbotron = ({ count, loadingCount, all }) => {
   const { cases, deaths, recovered } = all;
   const data = computePercentageData(cases, deaths, recovered);
 
@@ -33,10 +32,7 @@ const Jumbotron = ({ loading, count, loadingCount, all }) => {
           <Divider />
       </Header>
       <PieChartComponent data={data} />
-      {
-        loading ? <LoaderComponent rows={5} spinner>Loading...</LoaderComponent> :
-          <AllCases />
-      }
+      <AllCases />
     </div>
   )
 };
