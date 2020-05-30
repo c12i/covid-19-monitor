@@ -9,7 +9,6 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 
 import App from "./App";
 import { store } from "./redux/store";
-import 'rsuite/dist/styles/rsuite-dark.css';
 import * as serviceWorker from "./serviceWorker";
 
 const httpLink = createHttpLink({
