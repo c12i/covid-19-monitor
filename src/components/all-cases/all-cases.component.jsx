@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Panel, Divider } from 'rsuite';
-import 'rsuite/dist/styles/rsuite-default.css';
+import 'rsuite/dist/styles/rsuite-dark.css';
 import { AllCasesContainer, Key } from './all-cases.styles';
 
 const AllCases = ({ all }) => {

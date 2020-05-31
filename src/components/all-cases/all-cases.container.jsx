@@ -11,13 +11,13 @@ const GET_ALL_CASES = gql`
       cases
       deaths
       recovered
+      updated
     }
   }
 `;
 
 const AllCasesContainer = () => {
   const { data, loading } = useQuery(GET_ALL_CASES);
-  console.log(data);
 
   return <>{loading ? <LoaderComponent /> : <AllCases all={data.worldwideStats} />}</>;
 };
