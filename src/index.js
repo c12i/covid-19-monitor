@@ -18,4 +18,4 @@ ReactDOM.render(
   </Provider>
 , document.getElementById('root'));
 
-serviceWorker.registerValidSW();
+serviceWorker.register();
