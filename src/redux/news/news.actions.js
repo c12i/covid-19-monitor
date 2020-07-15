@@ -21,7 +21,13 @@ export const fetchNewsAsync = () => {
     dispatch(fetchNewsStart());
     fetch(urls.NEWS)
       .then(respose => respose.json())
-      .then(data => dispatch(fetchNewsSuccess(data)))
+      .then(data => {
+        if (data.status === "error") {
+          dispatch(fetchNewsFail(data));
+        } else {
+          dispatch(fetchNewsSuccess(data));
+        }
+      })
       .catch(error => {
         const errorMessage = error.toString();
         dispatch(fetchNewsFail(errorMessage));
