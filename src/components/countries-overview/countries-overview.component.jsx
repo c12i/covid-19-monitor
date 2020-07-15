@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback }from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import { Message } from "rsuite";
 
 import SearchForm from '../search-form/search-form.component';
 import PlaceholderPanels from '../placeholders/placeholders.component';
@@ -11,9 +12,9 @@ import { filterCountriesfromContinents } from '../../utils/filer-countries.utils
 
 import { fetchCountriesAsync } from '../../redux/countries/countries.actions';
 
-import { selectCountries, selectIsFetching } from '../../redux/countries/countries.selectors';
+import { selectCountries, selectIsFetching, selectErrorMessage } from '../../redux/countries/countries.selectors';
 
-const CountriesOverview = ({ loading, countries, fetchCountriesAsync }) => {
+const CountriesOverview = ({ loading, countries, fetchCountriesAsync, error }) => {
   const [ searchField, setSearchField ] = useState('');
 
   useEffect(() => {
@@ -32,25 +33,26 @@ const CountriesOverview = ({ loading, countries, fetchCountriesAsync }) => {
     <div>
       <br />
       <SearchForm
-        name='searchField'
+        name="searchField"
         value={searchField}
         handleChange={handleChange}
       />
       <br />
-
-      {
-        !loading ?
-          filteredCountries.map(country => (
-            <CountryPanel key={getKey(country.country)} {...country} />
-          )) :
-          <PlaceholderPanels rows={6} />
-      }
+      {loading && <PlaceholderPanels rows={6} />}
+      {error ? (
+        <Message type="error" description={error} />
+      ) : (
+        filteredCountries.map((country) => (
+          <CountryPanel key={getKey(country.country)} {...country} />
+        ))
+      )}
     </div>
-)};
+  );};
 
 const mapStateToProps = createStructuredSelector({
   countries: selectCountries,
-  loading: selectIsFetching
+  loading: selectIsFetching,
+  error: selectErrorMessage
 });
 
 const mapDispatchToProps = dispatch => ({

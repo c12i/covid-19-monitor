@@ -25,5 +25,5 @@ export const selectIsFetching = createSelector(
 
 export const selectErrorMessage = createSelector(
   [selectCountriesCases],
-  data => data.selectErrorMessage
+  data => data.errorMessage
 );
