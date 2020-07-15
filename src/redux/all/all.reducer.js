@@ -29,7 +29,7 @@ const allReducer = (state = INITIAL_STATE, action) => {
     case allActionTypes.FETCH_ALL_CASES_FAIL:
       return {
         ...state,
-        isFetching: true,
+        isFetching: false,
         errorMessage: action.payload
       };
 

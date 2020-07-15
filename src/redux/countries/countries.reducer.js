@@ -42,7 +42,7 @@ const countriesReducer = (state = INITIAL_STATE, action) => {
     case countriesActionTypes.FETCH_COUNTRY_FAIL:
       return {
         ...state,
-        isFetching: true,
+        isFetching: false,
         errorMessage: action.payload
       };
 
