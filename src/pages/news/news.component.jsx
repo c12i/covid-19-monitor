@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { Alert } from 'rsuite';
+import { Message } from 'rsuite';
 
 import { fetchNewsAsync } from '../../redux/news/news.actions';
 import { selectNewsArticles, selectIsFetching, selectErrorMessage } from '../../redux/news/news.selectors';
@@ -12,7 +12,7 @@ import { getKey } from '../../utils/get-key.utils';
 import ArticlePanel from '../../components/article-panel/article-panel.component';
 import PlaceholderPanels from '../../components/placeholders/placeholders.component';
 
-const NewsPage = ({ fetchNewsAsync, loading, articles, errorMessage }) => {
+const NewsPage = ({ fetchNewsAsync, loading, articles, error }) => {
   useEffect(() => {
     fetchNewsAsync();
   }, [fetchNewsAsync]);
@@ -21,7 +21,7 @@ const NewsPage = ({ fetchNewsAsync, loading, articles, errorMessage }) => {
     <div>
       <h3 style={{textAlign: 'center', margin: '20px'}}>News</h3>
       {loading && <PlaceholderPanels rows={4} />}
-      {errorMessage ? () => Alert.error(errorMessage.toString(), 5000)
+      {error ? <Message type="error" description={error.message} />
         :
         filterNews(articles).map(({ source: { name }, ...otherProps  }) => (
           <ArticlePanel 
@@ -38,7 +38,7 @@ const NewsPage = ({ fetchNewsAsync, loading, articles, errorMessage }) => {
 const mapStateToProps = createStructuredSelector({
   articles: selectNewsArticles,
   loading: selectIsFetching,
-  errorMessage: selectErrorMessage
+  error: selectErrorMessage
 });
 
 const mapDispatchToProps = dispatch => ({
