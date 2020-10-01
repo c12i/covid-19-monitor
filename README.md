@@ -1,4 +1,4 @@
-<h1 align="center">COVID-19 Monitor 🦠</h1>
+<h1 align="center">COVID-19 Eye-Opening Monitor 🦠</h1>
 <p>
   <a href="https://app.netlify.com/sites/covid19monitorapp/deploys" target="_blank">
     <img alt="Netlify Status" src="https://api.netlify.com/api/v1/badges/038a355b-106e-447d-8247-59f2adb15a68/deploy-status" />
